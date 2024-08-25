@@ -1,0 +1,15 @@
+<form nz-form [formGroup]="form">
+  <nz-form-item>
+      <nz-form-label nzFor="name">Name</nz-form-label>
+      <nz-form-control [nzErrorTip]="ErroNome">
+          <input nz-input id="name" type="text" formControlName="name">
+      </nz-form-control>
+  </nz-form-item >
+</form>
+
+<button nz-button nzType="primary" (click)="mostrarValorFormulario()">Mostrar Formulário</button>
+
+<ng-template #ErroNome>
+  <span *ngIf="form.get('name')?.hasError('required')">Campo obrigatório!</span>
+  <span *ngIf="form.get('name')?.hasError('nomeIniciaPor')">Campo deve iniciar por {{ inicialInvalida }}!</span>
+</ng-template>
